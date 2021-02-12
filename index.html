@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hello, React!</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button {
+        margin: 0.5rem;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .normal {
+        color: black;
+      }
+      img {
+          height: 300px;
+          width: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- element where application will be rendered -->
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      function OnePotato(props) {
+        return (
+          <h1>
+            {props.name} loves {props.type} potatos!
+          </h1>
+         
+        );
+      }
+      //class component using this.props.*
+      class TwoPotato extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>
+                {this.props.name} loves {this.props.type} potatos!
+              </h1>
+              <img src={this.props.photo} />
+            </div>
+          );
+        }
+      }
+      //the attributes passed in when rendering the components become part of the props object inside the component
+      ReactDOM.render(
+        <div>
+          <OnePotato name="Eric" type="Yukon Gold" />
+          <TwoPotato name="Susan" type="French Fried"  photo="https://images.boredomfiles.com/wp-content/uploads/2016/09/5-rotten-potatoes-664x439.jpg"/>
+          <TwoPotato name="Bryce" type="Red" photo="https://styletips101.com/wp-content/uploads/2016/06/potatoes.png"/>
+        </div>,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
